@@ -7,3 +7,5 @@ Werkzeug
 distribute
 wsgiref
 simplejson
+pandas
+numpy
