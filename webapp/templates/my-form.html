@@ -1,34 +1,39 @@
+<!doctype html>
+<title>Detecting Bias in Chicago Parking Tickets</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style_lulu.css')}}'>
+<div class=page>
 <form method="POST">
-<p>
-Please select a violation type from the menu below. This application will regress zip code median incomes on zip code's average initial fine for the selected violation. A plot with the data and a prediction curve are then plotted.   
+<p> Please select the <b>independent variable</b>, the <b>parking violation category</b>, and the <b>minimum number of observations per zipcode</b> from the menu below. </p>
+<p>This application will regress <strong>average ticket fines by zip code</strong> on the independent variable and plot the predicted curve with the underlying data. </p>
+
+<p> Independent variable(s): <select name="groupmetric">
+    <option value="{'code':'proportion_black','desc': 'Proportion of Black Population of Zip Code'}">Proportion of black population (with fitted curve)</option>
+    <option value="{'code':'log_income','desc': 'Median Income of Zip Code'}">Median income (with fitted curve)</option>
+    <option value="{'code':'both','desc': 'Proprtion of Black Population and Median Income of Zip Code'}">Both</option>
+        </select>
 </p>
+
+
+<p>
     Violation Type: <select name="violationcode">
-        <option value="{'code':'0976160F','desc': 'EXPIRED PLATES OR TEMPORARY REGISTRATION'}">EXPIRED PLATES OR TEMPORARY REGISTRATION</option>
-        <option value="{'code':'0964150B','desc': 'PARKING/STANDING PROHIBITED ANYTIME'}">PARKING/STANDING PROHIBITED ANYTIME</option>
-        <option value="{'code':'0964040B','desc': 'STREET CLEANING'}">STREET CLEANING</option>
-        <option value="{'code':'0964080A','desc': 'RUSH HOUR PARKING'}">RUSH HOUR PARKING</option>
-        <option value="{'code':'0964090E','desc': 'RESIDENTIAL PERMIT PARKING'}">RESIDENTIAL PERMIT PARKING</option>
-        <!-- <option value="{'code':'0964125B','desc': 'NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.'}">NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.</option> -->
-        <option value="{'code':'0976160A','desc': 'REAR AND FRONT PLATE REQUIRED'}">REAR AND FRONT PLATE REQUIRED</option>
-        <!--<option value="{'code':'0964125','desc': 'NO CITY STICKER OR IMPROPER DISPLAY'}">NO CITY STICKER OR IMPROPER DISPLAY</option> -->
-        <option value="{'code':'0964080B','desc': 'NO STANDING/PARKING TIME RESTRICTED'}">NO STANDING/PARKING TIME RESTRICTED</option>
-        <!--<option value="{'code':'0964190','desc': 'EXPIRED METER OR OVERSTAY'}">EXPIRED METER OR OVERSTAY</option>-->
-        <option value="{'code':'0964140B','desc': 'PARK OR STAND IN BUS/TAXI/CARRIAGE STAND'}">PARK OR STAND IN BUS/TAXI/CARRIAGE STAND</option>
-        <option value="{'code':'0964100A','desc': 'WITHIN 15 FEET OF FIRE HYDRANT'}">WITHIN 15 FEET OF FIRE HYDRANT</option>
-        <!--<option value="{'code':'0964110A','desc': 'DOUBLE PARKING OR STANDING'}">DOUBLE PARKING OR STANDING</option>-->
-        <option value="{'code':'0976220B','desc': 'SMOKED/TINTED WINDOWS PARKED/STANDING'}">SMOKED/TINTED WINDOWS PARKED/STANDING</option>
-        <option value="{'code':'0976160B','desc': 'EXPIRED PLATE OR TEMPORARY REGISTRATION'}">EXPIRED PLATE OR TEMPORARY REGISTRATION</option>
-        <option value="{'code':'0964050J','desc': 'DISABLED PARKING ZONE'}">DISABLED PARKING ZONE</option>
-        <!--<option value="{'code':'0964130','desc': 'PARK OR BLOCK ALLEY'}">PARK OR BLOCK ALLEY</option>-->
-        <option value="{'code':'0964110C','desc': 'PARK OR STAND ON CROSSWALK'}">PARK OR STAND ON CROSSWALK</option>
-        <option value="{'code':'0964190B','desc': 'EXPIRED METER CENTRAL BUSINESS DISTRICT'}">EXPIRED METER CENTRAL BUSINESS DISTRICT</option>
-        <option value="{'code':'0964100C','desc': 'BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE'}">BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE</option>       
+        <option value="{'code':'0976160F','desc': 'Expired Plates or Temporary Registration'}">Expired Plates or Temporary Registration</option>
+        <option value="{'code':'0964150B','desc': 'Parking/Standing Prohibited Anytime'}">Parking/Standing Prohibited Anytime</option>
+        <option value="{'code':'0964040B','desc': 'Street Cleaning'}">Street Cleaning</option>
+        <option value="{'code':'0964080A','desc': 'Rush Hour Parking'}">Rush Hour Parking</option>
+        <option value="{'code':'0964090E','desc': 'Residential Permit Parking'}">Residential Permit Parking</option>
+        <option value="{'code':'0976160A','desc': 'Rear and Front Plate Required'}">Rear and Front Plate Required</option>
+        <option value="{'code':'0964080B','desc': 'No Standing/Parking Time Restricted'}">No Standing/Parking Time Restricted</option>
+        <option value="{'code':'0964140B','desc': 'Park or Stand in Bus/Taxi/Carriage Stand'}">Park or Stand in Bus/Taxi/Carriage Stand</option>
+        <option value="{'code':'0964100A','desc': 'Within 15 Feet of Fire Hydrant'}">Within 15 Feet of Fire Hydrant</option>
+        <option value="{'code':'0976220B','desc': 'Smoked/Tinted Windows Parked/Standing'}">Smoked/Tinted Windows Parked/Standing</option>     
     </select>
+</p>
+
       <p>
-    # Observations Lower Bound: <input type='text' name='cutoff1' value = '1000' />
+    # Observations Lower Bound: <input type='text' name='cutoff1' value = '100' />
       </p>
-      <p>
-    # Observations Upper Bound: <input type='text' name='cutoff2' value='inf' />
-      </p>
+
     <input type="submit">
 </form>
+
+</div>
