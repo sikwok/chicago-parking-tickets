@@ -1,29 +1,7 @@
-# Miniconda on Heroku Example App
+# Chicago Parking Tickets
 
-This repository contains two things:
+This repository contains code and data that suggests the presence of implicit bias in the distribution of parking tickets in Chicago from January 2007 through May 2018.
 
-- A `Dockerfile`, which installs [scikit-learn](http://scikit-learn.org/stable/) with [miniconda](http://conda.pydata.org/miniconda.html), and a few [pip](https://pip.pypa.io/en/stable/) dependencies.
-- A [Flask](http://flask.pocoo.org) `webapp`, which utilizes basic functionality of `scikit-learn`.
+The goal is to establish whether merely inferences from the registration details of a car in violation can lead to biased outcomes in ticketing. The project uses Ridge regression to estimate the relationship between a zip code's average ticket fine for a specified parking violation with socioeconomic data about the zip code.
 
-All [Anaconda packages](https://docs.continuum.io/anaconda/pkg-docs) are supported—`scikit-learn` is just being used here as an example. 
-
-## ☤ Advantages over [Conda Buildpack](https://github.com/kennethreitz/conda-buildpack):
-
-- No slug size limit (Anaconda packages can be very large). 
-- Exact Miniconda environment, from Continuum Analytics.
-
-## ☤ Deploy this Application:
-
-Deploy with the [Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime):
-
-     $ heroku plugins:install heroku-container-registry
-     $ heroku container:login
-     
-     $ git clone https://github.com/heroku-examples/python-miniconda
-     $ cd python-miniconda
-     
-     $ heroku create
-     $ heroku container:push web
-
-✨🍰✨
-# chicago-parking-tickets
+The web application allows the user to choose between the zip code's demographics and the zip code's median income as an explanatory variable. The user can also choose from a list of parking violations and filter zip codes based on the number of fines that appear in the data set. 
